@@ -28,12 +28,13 @@ option(RDKSHELL_BUILD_CLIENT "RDKSHELL_BUILD_CLIENT" ON)
 option(RDKSHELL_BUILD_HIDDEN_SUPPORT "RDKSHELL_BUILD_HIDDEN_SUPPORT" OFF)
 option(RDKSHELL_BUILD_FORCE_1080 "RDKSHELL_BUILD_FORCE_1080" OFF)
 option(RDKSHELL_BUILD_FORCE_ANIMATE "RDKSHELL_BUILD_FORCE_ANIMATE" OFF)
+option(RDKSHELL_BUILD_CLIENT_CONTROL_EXTENSION_TEST, "RDKSHELL_BUILD_CLIENT_CONTROL_EXTENSION_TEST" OFF)
 
 
 set(COMMUNICATIONDIR ${CMAKE_CURRENT_SOURCE_DIR}/communication)
 
 set(RDKSHELL_SOURCES rdkshell.cpp compositorcontroller.cpp essosinstance.cpp rdkcompositor.cpp rdkcompositorsurface.cpp rdkcompositornested.cpp linuxkeys.cpp eastereggs.cpp animation.cpp animationutilities.cpp  rdkshelldata.cpp rdkshelljson.cpp linuxinput.cpp logger.cpp rdkshellimage.cpp permissions.cpp)
-set(RDKSHELL_LINK_LIBRARIES -lz -lessos -lEGL -lGLESv2 -lwayland-client -lwesteros_compositor -lpthread -ljpeg)
+set(RDKSHELL_LINK_LIBRARIES -lz -lessos -lEGL -lGLESv2 -lwayland-client -lwesteros_compositor -lpthread -ljpeg -lpng16)
 
 if (RDKSHELL_BUILD_WEBSOCKET_IPC)
   set(RDKSHELL_SOURCES ${RDKSHELL_SOURCES} messageHandler.cpp)
@@ -98,3 +99,8 @@ if (RDKSHELL_BUILD_CLIENT)
     message("Building rdkshell client")
     add_subdirectory(client)
 endif (RDKSHELL_BUILD_CLIENT)
+
+if (RDKSHELL_BUILD_CLIENT_CONTROL_EXTENSION_TEST)
+    message("Building rdkshell client control extension test")
+    add_subdirectory(tests/ClientControlExtension)
+endif (RDKSHELL_BUILD_CLIENT_CONTROL_EXTENSION_TEST)
