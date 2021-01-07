@@ -27,11 +27,8 @@
 #include "linuxkeys.h"
 #include "rdkshell.h"
 #include "permissions.h"
-<<<<<<< HEAD
-=======
 
 extern bool gForce720;
->>>>>>> upstream/master
 
 namespace RdkShell
 {
